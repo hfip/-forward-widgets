@@ -169,7 +169,8 @@ modules: [
 };
 
 // ════════════════════════════════════════════════════════════════
-// 🧠 الدوال الأساسية
+// مقتبس من اضافه احمد Dex
+// with_people يشتغل مع movie و tv في discover
 // ════════════════════════════════════════════════════════════════
 
 function formatResults(items, forceType) {
@@ -202,9 +203,8 @@ const map = {
 return ids.slice(0, 2).map(id => map[id]).filter(Boolean).join(”، “);
 }
 
-// ── أعمال الممثل / الممثلة ───────────────────────────────────
-// discover/movie → with_cast ✅ يشتغل
-// discover/tv   → with_people ✅ الصح (with_cast لا يشتغل مع TV)
+// ── أعمال الممثل ─────────────────────────────────────────────
+// with_people يشتغل مع كلا النوعين في discover
 async function personSpotlight(params) {
 if (!params.person_id) return [];
 const mediaType = params.media_type || “movie”;
@@ -214,9 +214,8 @@ const [movies, series] = await Promise.all([
 Widget.tmdb.get(“discover/movie”, {
 params: {
 language: TMDB_LANG,
-with_cast: params.person_id,
+with_people: params.person_id,
 sort_by: “popularity.desc”,
-“vote_count.gte”: 10,
 page: params.page || 1
 }
 }),
@@ -225,46 +224,27 @@ params: {
 language: TMDB_LANG,
 with_people: params.person_id,
 sort_by: “popularity.desc”,
-“vote_count.gte”: 5,
 page: params.page || 1
 }
 })
 ]);
-const all = [
+return [
 …formatResults((movies && movies.results) || [], “movie”),
 …formatResults((series && series.results) || [], “tv”)
 ].sort((a, b) => parseFloat(b.rating || 0) - parseFloat(a.rating || 0));
-return all;
 }
 
 ```
-if (mediaType === "tv") {
-  // TV يستخدم with_people
-  const response = await Widget.tmdb.get("discover/tv", {
-    params: {
-      language: TMDB_LANG,
-      with_people: params.person_id,
-      sort_by: "popularity.desc",
-      "vote_count.gte": 5,
-      page: params.page || 1
-    }
-  });
-  if (!response || !response.results) return [];
-  return formatResults(response.results, "tv");
-}
-
-// movie يستخدم with_cast
-const response = await Widget.tmdb.get("discover/movie", {
+const response = await Widget.tmdb.get(`discover/${mediaType}`, {
   params: {
     language: TMDB_LANG,
-    with_cast: params.person_id,
+    with_people: params.person_id,
     sort_by: "popularity.desc",
-    "vote_count.gte": 10,
     page: params.page || 1
   }
 });
 if (!response || !response.results) return [];
-return formatResults(response.results, "movie");
+return formatResults(response.results, mediaType);
 ```
 
 } catch (e) { return []; }
@@ -277,9 +257,8 @@ try {
 const response = await Widget.tmdb.get(“discover/movie”, {
 params: {
 language: TMDB_LANG,
-with_crew: params.person_id,
+with_people: params.person_id,
 sort_by: “popularity.desc”,
-“vote_count.gte”: 50,
 page: params.page || 1
 }
 });
@@ -288,7 +267,7 @@ return formatResults(response.results, “movie”);
 } catch (e) { return []; }
 }
 
-// ── بحث حر عن أي ممثل أو مخرج ──────────────────────────────
+// ── بحث حر ───────────────────────────────────────────────────
 async function searchPerson(params) {
 if (!params.query || !params.query.trim()) return [];
 const mediaType = params.media_type || “movie”;
@@ -304,10 +283,10 @@ const personId = String(searchResp.results[0].id);
 if (mediaType === "all") {
   const [movies, series] = await Promise.all([
     Widget.tmdb.get("discover/movie", {
-      params: { language: TMDB_LANG, with_cast: personId, sort_by: "popularity.desc", "vote_count.gte": 5, page: 1 }
+      params: { language: TMDB_LANG, with_people: personId, sort_by: "popularity.desc", page: 1 }
     }),
     Widget.tmdb.get("discover/tv", {
-      params: { language: TMDB_LANG, with_people: personId, sort_by: "popularity.desc", "vote_count.gte": 5, page: 1 }
+      params: { language: TMDB_LANG, with_people: personId, sort_by: "popularity.desc", page: 1 }
     })
   ]);
   return [
@@ -316,19 +295,11 @@ if (mediaType === "all") {
   ].sort((a, b) => parseFloat(b.rating || 0) - parseFloat(a.rating || 0));
 }
 
-if (mediaType === "tv") {
-  const resp = await Widget.tmdb.get("discover/tv", {
-    params: { language: TMDB_LANG, with_people: personId, sort_by: "popularity.desc", "vote_count.gte": 5, page: 1 }
-  });
-  if (!resp || !resp.results) return [];
-  return formatResults(resp.results, "tv");
-}
-
-const resp = await Widget.tmdb.get("discover/movie", {
-  params: { language: TMDB_LANG, with_cast: personId, sort_by: "popularity.desc", "vote_count.gte": 5, page: 1 }
+const resp = await Widget.tmdb.get(`discover/${mediaType}`, {
+  params: { language: TMDB_LANG, with_people: personId, sort_by: "popularity.desc", page: 1 }
 });
 if (!resp || !resp.results) return [];
-return formatResults(resp.results, "movie");
+return formatResults(resp.results, mediaType);
 ```
 
 } catch (e) { return []; }
