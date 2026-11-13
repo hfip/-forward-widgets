@@ -1,0 +1,15 @@
+{
+  "title": "⭐ نجوم هوليوود والمخرجون",
+  "description": "تصفح أعمال أشهر ممثلي ومخرجي هوليوود — 54 شخصية في مكان واحد",
+  "widgets": [
+    {
+      "id": "abdulluh.stars.directors.v1",
+      "title": "⭐ نجوم هوليوود والمخرجون",
+      "description": "تصفح أعمال أشهر ممثلي ومخرجي هوليوود — 54 شخصية في مكان واحد",
+      "requiredVersion": "0.0.1",
+      "version": "1.2.0",
+      "author": "Abdulluh.X",
+      "url": "https://raw.githubusercontent.com/hfip/-forward-widgets/refs/heads/main/stars_directors.js"
+    }
+  ]
+}
