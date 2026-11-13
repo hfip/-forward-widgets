@@ -32,3 +32,10 @@ Each script is standalone and documents its source at the top.
 ## License
 
 Not specified yet.
+
+---
+
+## الشكر والإسناد
+
+يستخدم هذا المشروع **TMDB API**، وهو **غير معتمد من TMDB ولا مرتبط بها**.
+الميتاداتا والصور من TMDB — https://www.themoviedb.org/
