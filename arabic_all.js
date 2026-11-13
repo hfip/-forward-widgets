@@ -196,12 +196,12 @@ var WidgetMetadata = {
     },
 
     // ═══════════════════════════════════════════════════════
-    //  FaselHD
+    //  المصدر أ
     // ═══════════════════════════════════════════════════════
 
     {
-      title: "🟡 FaselHD — أفلام",
-      description: "أحدث الأفلام من FaselHD",
+      title: "🎞️ المصدر أ — أفلام",
+      description: "أحدث الأفلام من المصدر أ — يتطلب إعداده في SOURCES",
       requiresWebView: false,
       functionName: "faselMovies",
       sectionMode: false,
@@ -212,8 +212,8 @@ var WidgetMetadata = {
     },
 
     {
-      title: "🟡 FaselHD — مسلسلات",
-      description: "أحدث المسلسلات من FaselHD",
+      title: "🎞️ المصدر أ — مسلسلات",
+      description: "أحدث المسلسلات من المصدر أ — يتطلب إعداده في SOURCES",
       requiresWebView: false,
       functionName: "faselSeries",
       sectionMode: false,
@@ -224,8 +224,8 @@ var WidgetMetadata = {
     },
 
     {
-      title: "🟡 FaselHD — بحث",
-      description: "ابحث في FaselHD",
+      title: "🎞️ المصدر أ — بحث",
+      description: "ابحث في المصدر أ",
       requiresWebView: false,
       functionName: "faselSearch",
       sectionMode: false,
@@ -241,12 +241,12 @@ var WidgetMetadata = {
     },
 
     // ═══════════════════════════════════════════════════════
-    //  Akwam — أكوام
+    //  المصدر ب
     // ═══════════════════════════════════════════════════════
 
     {
-      title: "🔵 أكوام — أفلام",
-      description: "أحدث الأفلام من أكوام",
+      title: "🎞️ المصدر ب — أفلام",
+      description: "أحدث الأفلام من المصدر ب — يتطلب إعداده في SOURCES",
       requiresWebView: false,
       functionName: "akwamMovies",
       sectionMode: false,
@@ -257,8 +257,8 @@ var WidgetMetadata = {
     },
 
     {
-      title: "🔵 أكوام — مسلسلات",
-      description: "أحدث المسلسلات من أكوام",
+      title: "🎞️ المصدر ب — مسلسلات",
+      description: "أحدث المسلسلات من المصدر ب — يتطلب إعداده في SOURCES",
       requiresWebView: false,
       functionName: "akwamSeries",
       sectionMode: false,
@@ -269,8 +269,8 @@ var WidgetMetadata = {
     },
 
     {
-      title: "🔵 أكوام — بحث",
-      description: "ابحث في أكوام",
+      title: "🎞️ المصدر ب — بحث",
+      description: "ابحث في المصدر ب",
       requiresWebView: false,
       functionName: "akwamSearch",
       sectionMode: false,
@@ -286,12 +286,12 @@ var WidgetMetadata = {
     },
 
     // ═══════════════════════════════════════════════════════
-    //  Shahid — شاهد
+    //  المصدر ج
     // ═══════════════════════════════════════════════════════
 
     {
-      title: "🟢 شاهد — أفلام",
-      description: "أفلام منصة شاهد",
+      title: "🎞️ المصدر ج — أفلام",
+      description: "أفلام من المصدر ج — يتطلب إعداده في SOURCES",
       requiresWebView: false,
       functionName: "shahidMovies",
       sectionMode: false,
@@ -302,8 +302,8 @@ var WidgetMetadata = {
     },
 
     {
-      title: "🟢 شاهد — مسلسلات",
-      description: "مسلسلات منصة شاهد",
+      title: "🎞️ المصدر ج — مسلسلات",
+      description: "مسلسلات من المصدر ج — يتطلب إعداده في SOURCES",
       requiresWebView: false,
       functionName: "shahidSeries",
       sectionMode: false,
@@ -314,12 +314,12 @@ var WidgetMetadata = {
     },
 
     // ═══════════════════════════════════════════════════════
-    //  MyCima — ماي سيما
+    //  المصدر د
     // ═══════════════════════════════════════════════════════
 
     {
-      title: "🟠 ماي سيما — أفلام",
-      description: "أحدث الأفلام من ماي سيما",
+      title: "🎞️ المصدر د — أفلام",
+      description: "أحدث الأفلام من المصدر د — يتطلب إعداده في SOURCES",
       requiresWebView: false,
       functionName: "mycimaMovies",
       sectionMode: false,
@@ -330,8 +330,8 @@ var WidgetMetadata = {
     },
 
     {
-      title: "🟠 ماي سيما — مسلسلات",
-      description: "أحدث المسلسلات من ماي سيما",
+      title: "🎞️ المصدر د — مسلسلات",
+      description: "أحدث المسلسلات من المصدر د — يتطلب إعداده في SOURCES",
       requiresWebView: false,
       functionName: "mycimaSeries",
       sectionMode: false,
@@ -342,8 +342,8 @@ var WidgetMetadata = {
     },
 
     {
-      title: "🟠 ماي سيما — بحث",
-      description: "ابحث في ماي سيما",
+      title: "🎞️ المصدر د — بحث",
+      description: "ابحث في المصدر د",
       requiresWebView: false,
       functionName: "mycimaSearch",
       sectionMode: false,
@@ -359,12 +359,12 @@ var WidgetMetadata = {
     },
 
     // ═══════════════════════════════════════════════════════
-    //  Anime4up / Animeiat — أنيمي
+    //  المصادر هـ / و — أنيمي
     // ═══════════════════════════════════════════════════════
 
     {
-      title: "✨ أنيمي — Anime4up",
-      description: "أحدث الأنيمي من Anime4up",
+      title: "✨ أنيمي — المصدر هـ",
+      description: "أحدث الأنيمي من المصدر هـ — يتطلب إعداده في SOURCES",
       requiresWebView: false,
       functionName: "anime4upLatest",
       sectionMode: false,
@@ -375,8 +375,8 @@ var WidgetMetadata = {
     },
 
     {
-      title: "✨ أنيمي — Animeiat",
-      description: "أحدث الأنيمي من Animeiat",
+      title: "✨ أنيمي — المصدر و",
+      description: "أحدث الأنيمي من المصدر و — يتطلب إعداده في SOURCES",
       requiresWebView: false,
       functionName: "animeiatLatest",
       sectionMode: false,
@@ -388,7 +388,7 @@ var WidgetMetadata = {
 
     {
       title: "✨ أنيمي — بحث",
-      description: "ابحث في Anime4up",
+      description: "ابحث في المصدر هـ",
       requiresWebView: false,
       functionName: "animeSearch",
       sectionMode: false,
@@ -566,7 +566,7 @@ async function loadDetail(link) {
 }
 
 // ================================================================
-//  FaselHD — دوال
+//  المصدر أ — دوال
 // ================================================================
 
 const FASEL_URL = SOURCES.faselhd;
@@ -592,7 +592,7 @@ async function faselSearch(params) {
 }
 
 // ================================================================
-//  Akwam — أكوام
+//  المصدر ب
 // ================================================================
 
 const AKWAM_URL = SOURCES.akwam;
@@ -618,7 +618,7 @@ async function akwamSearch(params) {
 }
 
 // ================================================================
-//  Shahid — شاهد (API رسمي)
+//  المصدر ج
 // ================================================================
 
 const SHAHID_API = SOURCES.shahid;
@@ -651,7 +651,7 @@ async function shahidMovies(params)  { return await shahidFetch("movie", params.
 async function shahidSeries(params)  { return await shahidFetch("series", params.page); }
 
 // ================================================================
-//  MyCima — ماي سيما
+//  المصدر د
 // ================================================================
 
 const MYCIMA_URL = SOURCES.mycima;
@@ -677,7 +677,7 @@ async function mycimaSearch(params) {
 }
 
 // ================================================================
-//  Anime4up — أنيمي
+//  المصدر هـ
 // ================================================================
 
 const ANIME4UP_URL = SOURCES.anime4up;
@@ -695,7 +695,7 @@ async function anime4upFetch(path, page) {
 async function anime4upLatest(params) { return await anime4upFetch("anime-list-animes", params.page); }
 
 // ================================================================
-//  Animeiat — أنيمي
+//  المصدر و
 // ================================================================
 
 const ANIMEIAT_URL = SOURCES.animeiat;
