@@ -15,7 +15,7 @@ A collection of Arabic widget scripts for the **Forward** player: channels, cine
 | `arabic_all.js` | All-in-one Arabic channel pack |
 | `arabic_xtream_v2.js` | Xtream Codes / IPTV source |
 | `cinatomy.json` · `cinatomy_tv.json` | Cinema widget layouts (phone / TV) |
-| `stars_directors.js` · `link_Trakt⁩.js` | People and Trakt widgets |
+| `stars_directors.js` · `link_trakt.js` | People and Trakt widgets |
 | `stars.directors.fix.fwd` | Packed bundle with metadata fixes |
 
 ## Usage
@@ -38,3 +38,7 @@ Not specified yet.
 
 يستخدم هذا المشروع **TMDB API**، وهو **غير معتمد من TMDB ولا مرتبط بها**.
 الميتاداتا والصور من TMDB — https://www.themoviedb.org/
+
+## License
+
+MIT © 2026 Abdulluh.X (hfip) — see [LICENSE](LICENSE).
