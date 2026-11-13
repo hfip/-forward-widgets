@@ -14,7 +14,6 @@ A collection of Arabic widget scripts for the **Forward** player: channels, cine
 |---|---|
 | `arabic_all.js` | All-in-one Arabic channel pack |
 | `arabic_xtream_v2.js` | Xtream Codes / IPTV source |
-| `cinema_widget.js` · `vip_widget.js` · `vip_widget_v3.js` | Catalog widgets (cinema / VIP layouts) |
 | `cinatomy.json` · `cinatomy_tv.json` | Cinema widget layouts (phone / TV) |
 | `stars_directors.js` · `link_Trakt⁩.js` | People and Trakt widgets |
 | `stars.directors.fix.fwd` | Packed bundle with metadata fixes |
