@@ -1,13 +1,30 @@
 // ============================================================
 //  ويدجت عربي شامل — Forward App
-//  المصادر: TMDB + FaselHD + Akwam + Shahid + MyCima + Anime4up
+//  المصادر: TMDB + مصادر يضيفها المستخدم (انظر SOURCES أدناه)
 //  بقلم: Abdulluh.X | @Abdulluh_X
+// ============================================================
+//  إعداد المصادر — عدّلها بنفسك
+//  هذا الملف لا يشحن أي مصدر افتراضي. ضع رابط مصدر تملك حق
+//  استخدامه، أو اتركه فارغًا لتعطيل وحدته.
+//  This file ships with NO default sources. Point each entry at a
+//  source you are authorized to use; leave it empty to disable it.
+// ============================================================
+
+var SOURCES = {
+  faselhd:  "",
+  akwam:    "",
+  shahid:   "",
+  mycima:   "",
+  anime4up: "",
+  animeiat: ""
+};
+
 // ============================================================
 
 var WidgetMetadata = {
   id: "arabic_all_in_one",
   title: "🌙 عربي شامل",
-  description: "جميع المصادر العربية في مكان واحد — TMDB، FaselHD، أكوام، شاهد، ماي سيما، أنمي",
+  description: "مصادر عربية في مكان واحد — TMDB + مصادر يضيفها المستخدم",
   author: "Abdulluh.X",
   site: "https://t.me/Abdulluh_X",
   version: "1.0.0",
@@ -552,9 +569,10 @@ async function loadDetail(link) {
 //  FaselHD — دوال
 // ================================================================
 
-const FASEL_URL = "https://www.faselhd.club";
+const FASEL_URL = SOURCES.faselhd;
 
 async function faselFetch(path, page) {
+  if (!FASEL_URL) return [];
   const p = parseInt(page) || 1;
   const url = p > 1 ? `${FASEL_URL}/${path}/page/${p}` : `${FASEL_URL}/${path}`;
   const res = await Widget.http.get(url, {
@@ -566,6 +584,7 @@ async function faselFetch(path, page) {
 async function faselMovies(params)  { return await faselFetch("category/افلام", params.page); }
 async function faselSeries(params)  { return await faselFetch("series", params.page); }
 async function faselSearch(params) {
+  if (!FASEL_URL) return [];
   if (!params.query) return [];
   const url = `${FASEL_URL}/?s=${encodeURIComponent(params.query)}`;
   const res = await Widget.http.get(url, { headers: { ...HEADERS_MOBILE, "Referer": FASEL_URL } });
@@ -576,9 +595,10 @@ async function faselSearch(params) {
 //  Akwam — أكوام
 // ================================================================
 
-const AKWAM_URL = "https://akwam.to";
+const AKWAM_URL = SOURCES.akwam;
 
 async function akwamFetch(path, page) {
+  if (!AKWAM_URL) return [];
   const p = parseInt(page) || 1;
   const url = p > 1 ? `${AKWAM_URL}/${path}?page=${p}` : `${AKWAM_URL}/${path}`;
   const res = await Widget.http.get(url, {
@@ -590,6 +610,7 @@ async function akwamFetch(path, page) {
 async function akwamMovies(params)  { return await akwamFetch("movies", params.page); }
 async function akwamSeries(params)  { return await akwamFetch("series", params.page); }
 async function akwamSearch(params) {
+  if (!AKWAM_URL) return [];
   if (!params.query) return [];
   const url = `${AKWAM_URL}/search?q=${encodeURIComponent(params.query)}`;
   const res = await Widget.http.get(url, { headers: { ...HEADERS_MOBILE, "Referer": AKWAM_URL } });
@@ -600,24 +621,26 @@ async function akwamSearch(params) {
 //  Shahid — شاهد (API رسمي)
 // ================================================================
 
-const SHAHID_API = "https://shahid.mbc.net/api/v2_1/node/search";
+const SHAHID_API = SOURCES.shahid;
+const SHAHID_BASE = SHAHID_API ? SHAHID_API.split("/api/")[0] : "";
 
 function parseShahidResults(items) {
   return (items || []).map(item => ({
     title: item.title_ar || item.title || "بدون عنوان",
-    link: item.url || item.friendlyUrl ? `https://shahid.mbc.net${item.friendlyUrl || ""}` : "",
+    link: item.url || (item.friendlyUrl && SHAHID_BASE) ? `${SHAHID_BASE}${item.friendlyUrl || ""}` : "",
     poster: item.image || item.imageThumbnail || null,
     label: item.year ? String(item.year) : undefined
   }));
 }
 
 async function shahidFetch(type, page) {
+  if (!SHAHID_API) return [];
   const url = `${SHAHID_API}?type=${type}&limit=20&page=${parseInt(page) || 1}&lang=ar`;
   const res = await Widget.http.get(url, {
     headers: {
       "User-Agent": HEADERS_MOBILE["User-Agent"],
       "Accept": "application/json",
-      "Origin": "https://shahid.mbc.net"
+      "Origin": SHAHID_BASE
     }
   });
   const data = JSON.parse(res.data);
@@ -631,9 +654,10 @@ async function shahidSeries(params)  { return await shahidFetch("series", params
 //  MyCima — ماي سيما
 // ================================================================
 
-const MYCIMA_URL = "https://wecima.show";
+const MYCIMA_URL = SOURCES.mycima;
 
 async function mycimeFetch(path, page) {
+  if (!MYCIMA_URL) return [];
   const p = parseInt(page) || 1;
   const url = p > 1 ? `${MYCIMA_URL}/${path}/page/${p}/` : `${MYCIMA_URL}/${path}/`;
   const res = await Widget.http.get(url, {
@@ -645,6 +669,7 @@ async function mycimeFetch(path, page) {
 async function mycimaMovies(params)  { return await mycimeFetch("movies", params.page); }
 async function mycimaSeries(params)  { return await mycimeFetch("series", params.page); }
 async function mycimaSearch(params) {
+  if (!MYCIMA_URL) return [];
   if (!params.query) return [];
   const url = `${MYCIMA_URL}/search/${encodeURIComponent(params.query)}/`;
   const res = await Widget.http.get(url, { headers: { ...HEADERS_MOBILE, "Referer": MYCIMA_URL } });
@@ -655,9 +680,10 @@ async function mycimaSearch(params) {
 //  Anime4up — أنيمي
 // ================================================================
 
-const ANIME4UP_URL = "https://anime4up.cam";
+const ANIME4UP_URL = SOURCES.anime4up;
 
 async function anime4upFetch(path, page) {
+  if (!ANIME4UP_URL) return [];
   const p = parseInt(page) || 1;
   const url = p > 1 ? `${ANIME4UP_URL}/${path}/page/${p}/` : `${ANIME4UP_URL}/${path}/`;
   const res = await Widget.http.get(url, {
@@ -672,9 +698,10 @@ async function anime4upLatest(params) { return await anime4upFetch("anime-list-a
 //  Animeiat — أنيمي
 // ================================================================
 
-const ANIMEIAT_URL = "https://animeiat.co";
+const ANIMEIAT_URL = SOURCES.animeiat;
 
 async function animeiatFetch(path, page) {
+  if (!ANIMEIAT_URL) return [];
   const p = parseInt(page) || 1;
   const url = p > 1 ? `${ANIMEIAT_URL}/${path}?page=${p}` : `${ANIMEIAT_URL}/${path}`;
   const res = await Widget.http.get(url, {
@@ -686,6 +713,7 @@ async function animeiatFetch(path, page) {
 async function animeiatLatest(params) { return await animeiatFetch("anime", params.page); }
 
 async function animeSearch(params) {
+  if (!ANIME4UP_URL) return [];
   if (!params.query) return [];
   const url = `${ANIME4UP_URL}/?s=${encodeURIComponent(params.query)}`;
   const res = await Widget.http.get(url, { headers: { ...HEADERS_MOBILE, "Referer": ANIME4UP_URL } });
